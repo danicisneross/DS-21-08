@@ -57,29 +57,28 @@ public class StringCount {
         char[] charArray = password.toCharArray();
         int[] specials = {'?', '@', '#', '$', '.', ','};
 
-        for (int i = 0; i < charArray.length; i++) {
-            if (Character.isLowerCase(charArray[i])) {
+        for (char c : charArray) {
+            if (Character.isLowerCase(c)) {
                 lowCase = true;
             }
 
-            if (Character.isUpperCase(charArray[i])) {
+            if (Character.isUpperCase(c)) {
                 upCase = true;
             }
 
-            if (Character.isDigit(charArray[i])) {
+            if (Character.isDigit(c)) {
                 digit = true;
             }
 
-            for (int j = 0; j < specials.length; j++) {
-                if (charArray[i] == specials[j]) {
+            for (int i : specials) {
+                if (c == i) {
                     special = true;
+                    break;
                 }
             }
         }
 
-        if (password.length() >= 8 && upCase && lowCase && digit && special) {
-            return true;
-        } else return false;
+        return password.length() >= 8 && upCase && lowCase && digit && special;
     }
 }
 

@@ -5,7 +5,7 @@ public class Slopes {
     public static int downTheSlope(char[][] slopeMap, int right, int down) {
         int stopbr = 0, stopbd = 0, trees = 0, i = 0, iter = 0, ited = 0, longc = slopeMap[0].length, longf = slopeMap.length;
 
-        if (((right > 1) || (right >= longc)) || ((1 > down) || (down >= longf))) {
+        if (((right < 1) || (right >= longc)) || ((down < 1) || (down >= longf))) {
             throw new IllegalArgumentException();
         } else {
             for (int c = 0; c < longc; c++) {

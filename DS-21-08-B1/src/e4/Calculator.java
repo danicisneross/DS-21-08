@@ -8,6 +8,41 @@ public class Calculator {
     private List<Operations> op;
     private List<Float> values;
 
+    public enum Operations {
+        SUMA("+"),
+        RESTA("-"),
+        MULTIPLICACION("*"),
+        DIVISION("/");
+        private String signo;
+
+        public String getSigno(Operations operations) {
+            return signo;
+        }
+
+        Operations(String signo) {
+            this.signo = signo;
+        }
+
+        public float hacerOp(float value1, float value2) throws ArithmeticException {
+            float result;
+
+            switch (this) {
+                case SUMA -> result = value1 + value2;
+                case RESTA -> result = value1 - value2;
+                case MULTIPLICACION -> result = value1 * value2;
+                case DIVISION -> {
+                    if (value2 == 0f) {
+                        throw new ArithmeticException();
+                    } else {
+                        result = value1 / value2;
+                    }
+                }
+                default -> throw new IllegalArgumentException();
+            }
+            return result;
+        }
+    }
+
     public Calculator() {
         this.op = new ArrayList<>();
         this.values = new ArrayList<>();
@@ -67,46 +102,18 @@ public class Calculator {
         return result;
     }
 
-    //@Override
-    //public String toString(){
-    //
-    //
-    //  return ;
-    //}
+    @Override
+    public String toString(){
+        String suma = "[+]";
+        String resta = "[-]";
+        String multiplicacion = "[*]";
+        String division = "[/]";
+        String resultString = "";
 
-    public enum Operations {
-        SUMA("+"),
-        RESTA("-"),
-        MULTIPLICACION("*"),
-        DIVISION("/");
-        private String signo;
 
-        public String getSigno(Operations operations) {
-            return signo;
-        }
 
-        Operations(String signo) {
-            this.signo = signo;
-        }
 
-        public float hacerOp(float value1, float value2) throws ArithmeticException {
-            float result;
 
-            switch (this) {
-                case SUMA -> result = value1 + value2;
-                case RESTA -> result = value1 - value2;
-                case MULTIPLICACION -> result = value1 * value2;
-                case DIVISION -> {
-                    if (value2 == 0f) {
-                        throw new ArithmeticException();
-                    } else {
-                        result = value1 / value2;
-                    }
-                }
-                default -> throw new IllegalArgumentException();
-            }
-            return result;
-        }
+
     }
 }
-
