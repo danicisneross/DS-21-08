@@ -5,15 +5,25 @@ import java.util.List;
 
 public class Calculator {
 
-    private List<Operations> op;
-    private List<Float> values;
+    /**
+     * Lists where we will have the operations and the values
+     * that we will use for said operations.
+     */
+    private final List<Operations> op;
+    private final List<Float> values;
+
+    /**
+     * Public enum containing the operations that
+     * can be used on the calculator.
+     * hacerOp: allows us to determine what operation we are going to do.
+     */
 
     public enum Operations {
         SUMA("[+]"),
         RESTA("[-]"),
         MULTIPLICACION("[*]"),
         DIVISION("[/]");
-        private String signo;
+        private final String signo;
 
         public String getSigno(Operations operations) {
             return signo;
@@ -43,15 +53,36 @@ public class Calculator {
         }
     }
 
+    /**
+     * Public constructor of the calculator.
+     */
+
     public Calculator() {
         this.op = new ArrayList<>();
         this.values = new ArrayList<>();
     }
 
+    /**
+     * Clean the internal state of the calculator.
+     */
+
     public void cleanOperations() {
         this.op.clear();
         this.values.clear();
     }
+
+    /**
+     * Add a new operation to the internal state of the calculator.
+     * It is worth mentioning that the calculator behaves in an accumulative way,
+     * thus only first operation has two operands.
+     * The rest of computations work with the accumulated value and only an extra
+     * new operand. Second input value must be ignored if the operation does not
+     * correspond to the first one.
+     * @param operation operation to add , as string , "+" , " -" , "*" , "/".
+     * @param values Operands of the new operation ( one or two operands ).
+     * Uses the varargs feature.
+     * @throws IllegalArgumentException If the operation does not exist.
+     */
 
     public void addOperation(String operation, float... values) {
 
@@ -78,6 +109,15 @@ public class Calculator {
         }
     }
 
+    /**
+     * Execute the set of operations of the internal state of the calculator.
+     * Once execution is finished , internal state (operands and operations)
+     * is restored (EVEN if exception occurs).
+     * This calculator works with " Batches " of operations.
+     * @return result of the execution.
+     * @throws ArithmeticException If the operation returns an invalid value (division by zero).
+     */
+
     public float executeOperations() {
         float result = 0;
 
@@ -103,33 +143,48 @@ public class Calculator {
         return result;
     }
 
+    /**
+     * Current internal state of calculator is printed.
+     * FORMAT:
+     * "[{+/ -/"/"/*}] value1_value2 [{+/ -/"/"/*}] value1 [{+/ -/"/"/*}] value1 {...}".
+     * @return String of the internal state of the calculator.
+     */
+
     @Override
     public String toString() {
         StringBuilder opS = new StringBuilder("[STATE:");
         String condicion = "[STATE:]";
 
-        for (Operations operations : op) {
-            if (operations == Operations.SUMA) {
-                opS.append(("[+]"));
-            } else if (operations == Operations.RESTA) {
-                opS.append(("[-]"));
-            } else if (operations == Operations.MULTIPLICACION) {
-                opS.append(("[*]"));
-            } else if (operations == Operations.DIVISION) {
-                opS.append(("[/]"));
-            } else {
-                opS.append("]");
-            }
-            if (!opS.equals(condicion)) {
-                for (int j = 0; j < values.size(); j++) {
-                    if (j == 0) {
-                        opS.append(values.get(0) + "_" + values.get(1));
+        try {
+            for (int j = 0; j < values.size(); j++) {
+                for (Operations operations : op) {
+                    if (operations == Operations.SUMA) {
+                        opS.append(("[+]"));
+                        j++;
+                    } else if (operations == Operations.RESTA) {
+                        opS.append(("[-]"));
+                        j++;
+                    } else if (operations == Operations.MULTIPLICACION) {
+                        opS.append(("[*]"));
+                        j++;
+                    } else if (operations == Operations.DIVISION) {
+                        opS.append(("[/]"));
+                        j++;
                     } else {
-                        opS.append(values.get(j + 1) );
+                        opS.append("]");
+                    }
+                    if (!opS.equals(condicion)) {
+                        if (j == 1) {
+                            opS.append(values.get(0) + "_" + values.get(1));
+                        } else {
+                            opS.append(values.get(j));
+                        }
                     }
                 }
-                opS.append("]");
             }
+            opS.append("]");
+        } catch (ArithmeticException a){
+            opS.append("]");
         }
         return opS.toString();
     }
