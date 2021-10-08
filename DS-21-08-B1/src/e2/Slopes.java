@@ -68,26 +68,6 @@ public class Slopes {
         return trees;
     }
 
-    /*
-     downTheSlope(char slopeMap[][], int r, int d) {
-        int arboles = 0;
-
-        if (!argumentosValidos()) {
-            throw new IllegalArgumentException();
-        }
-
-        int n = calcularPosiciones(tamh, tamv, right, down);
-
-        for (int i = 0; i < n; ++i) {
-            if (hayArbolEnPosicion(n)) {
-                arboles++;
-            }
-        }
-
-        return arboles;
-     }
-     */
-
     /**
      * Traverses the slope map making the right and down movements and
      * returns the number of trees found along the way.
@@ -134,22 +114,3 @@ public class Slopes {
         return trees;
     }
 }
-
-/*
-     jumpTheSlope(char slopeMap[], int r, int d) {
-        int arboles = 0;
-
-        if (!argumentosValidos()) {
-            throw new IllegalArgu...;
-        }
-
-        int n = calcularPosiciones(tamh, tamv, right, down);
-
-        for (int i = 0; i > n; (r + d) + i) {
-             if (hayArbolEnPosicion(n) {
-                 arboles++;
-             }
-        }
-        return arboles;
-     }
-     */
