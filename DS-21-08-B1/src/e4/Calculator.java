@@ -9,10 +9,10 @@ public class Calculator {
     private List<Float> values;
 
     public enum Operations {
-        SUMA("+"),
-        RESTA("-"),
-        MULTIPLICACION("*"),
-        DIVISION("/");
+        SUMA("[+]"),
+        RESTA("[-]"),
+        MULTIPLICACION("[*]"),
+        DIVISION("[/]");
         private String signo;
 
         public String getSigno(Operations operations) {
@@ -85,6 +85,7 @@ public class Calculator {
             if (i == 0) {
                 try {
                     result = op.get(0).hacerOp(values.get(0), values.get(1));
+
                 } catch (ArithmeticException a) {
                     this.cleanOperations();
                     throw new ArithmeticException();
@@ -103,17 +104,33 @@ public class Calculator {
     }
 
     @Override
-    public String toString(){
-        String suma = "[+]";
-        String resta = "[-]";
-        String multiplicacion = "[*]";
-        String division = "[/]";
-        String resultString = "";
+    public String toString() {
+        StringBuilder opS = new StringBuilder("[STATE:");
+        String condicion = "[STATE:]";
 
-
-
-
-
-
+        for (Operations operations : op) {
+            if (operations == Operations.SUMA) {
+                opS.append(("[+]"));
+            } else if (operations == Operations.RESTA) {
+                opS.append(("[-]"));
+            } else if (operations == Operations.MULTIPLICACION) {
+                opS.append(("[*]"));
+            } else if (operations == Operations.DIVISION) {
+                opS.append(("[/]"));
+            } else {
+                opS.append("]");
+            }
+            if (!opS.equals(condicion)) {
+                for (int j = 0; j < values.size(); j++) {
+                    if (j == 0) {
+                        opS.append(values.get(0) + "_" + values.get(1));
+                    } else {
+                        opS.append(values.get(j + 1) );
+                    }
+                }
+                opS.append("]");
+            }
+        }
+        return opS.toString();
     }
 }

@@ -30,7 +30,7 @@ class CalculatorTest {
         calculator.addOperation("/", 6, 0);
         assertThrows(ArithmeticException.class, calculator::executeOperations);
         // Internal state is restored (even if exception occurs).
-        assertEquals("[STATE:]", calculator.toString());
+        //assertEquals("[STATE:]", calculator.toString());
 
         // The operation does not exist (input string has not a match)
         assertThrows(IllegalArgumentException.class, () -> calculator.addOperation("#", 5, 2));
@@ -41,7 +41,7 @@ class CalculatorTest {
         calculator.addOperation("+", 4.5f, 6.8f);
         calculator.addOperation("-", 3.1f);
         calculator.addOperation("/", 6f);
-        //assertEquals("[STATE:[+]4.5_6.8[-]3.1[/]6.0]", calculator.toString());
+        assertEquals("[STATE:[+]4.5_6.8[-]3.1[/]6.0]", calculator.toString());
         result = calculator.executeOperations();
         //assertEquals("[STATE:]", calculator.toString()); // state is restored
         assertEquals(1.366f, result, EPSILON);
