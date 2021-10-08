@@ -71,7 +71,7 @@ public class Slopes {
     /**
      * Traverses the slope map making the right and down movements and
      * returns the number of trees found along the way.
-     * Since it " jumps " from the initial position to the final position,
+     * Since it "jumps" from the initial position to the final position,
      * only takes into account the trees on those initial / final positions.
      * Params, return value and thrown expections as in downTheSlope...
      */
