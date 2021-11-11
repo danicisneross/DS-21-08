@@ -19,10 +19,10 @@ public class Calculator {
      */
 
     public enum Operations {
-        SUMA("[+]"),
-        RESTA("[-]"),
-        MULTIPLICACION("[*]"),
-        DIVISION("[/]");
+        SUMA("+"),
+        RESTA("-"),
+        MULTIPLICACION("*"),
+        DIVISION("/");
         private final String signo;
 
         public String getSigno(Operations operations) {
@@ -85,6 +85,7 @@ public class Calculator {
      */
 
     public void addOperation(String operation, float... values) {
+        //Operation op = Calculator.getSigno;
 
         if (this.values.size() == 0) {
             if (values.length == 2) {
@@ -142,6 +143,9 @@ public class Calculator {
         this.cleanOperations();
         return result;
     }
+    // Iterator<Operation> operationIterator = operationList.iterator();  //manera de recorrer un array list
+    //con operationIterator.hasNext()
+    //con operationIterator.next();
 
     /**
      * Current internal state of calculator is printed.

@@ -6,7 +6,7 @@ public class Slopes {
      * Check that the matrix is valid.
      */
 
-    public static boolean argumentosValidos(char[][] slopeMap, int right, int down){
+    public static boolean argumentosValidos(char[][] slopeMap, int right, int down){ //en vez de public -> private
         int longc = slopeMap[0].length, longf = slopeMap.length;
         boolean control = false;
 
@@ -44,7 +44,7 @@ public class Slopes {
         if (argumentosValidos(slopeMap, right, down)) {
             throw new IllegalArgumentException();
         } else {
-            for (int j = 0; (j < longf); j++) {
+            for (int j = 0; (j < longf); j++) { //un while para comprobar que no ha llegado al final de la matriz  while (filas < longf)
                 if (iter == 0) {
                     stopbr += right;
                 }

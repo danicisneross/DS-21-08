@@ -11,7 +11,7 @@ public class StringCount {
      * @return Number of words in the String or zero if it is null.
      */
 
-    public static int countWords(String text) {
+    public static int countWords(String text) { //text.trim().split(" +").length;
         int count = 0;
 
         if (text != null) {
@@ -59,7 +59,7 @@ public class StringCount {
      * @return Number of times the character appears in the String or zero if null.
      */
 
-    public static int countCharIgnoringCase(String text, char c) {
+    public static int countCharIgnoringCase(String text, char c) { //se podia utilizar la funcion anterior -> count char
         int count = 0;
 
         if (text != null) {
