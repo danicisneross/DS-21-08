@@ -18,6 +18,9 @@ public class Gestion {
     public void anhadirApartamento(int num, int precioB, ArrayList<Integer> precioG,
                                    int tamanho, int codp, String dir) {
         if(num > 0 && precioB > 0 && tamanho > 0 && codp > 0) {
+            for (Integer integer : precioG)
+                if (integer >= 0);
+                else throw new IllegalArgumentException();
             Anuncio anuncio = new Anuncio(num, precioB, precioG,
                     tamanho, codp, dir);
             listaapartamentos.add(anuncio);

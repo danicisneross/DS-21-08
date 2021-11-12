@@ -52,11 +52,15 @@ class GestionTest {
         gestor = new Gestion(null);
         gestor.listaapartamentos = new ArrayList<>();
         ArrayList<Integer> precioGarAux = new ArrayList<>();
+        ArrayList<Integer> precioGarAux2 = new ArrayList<>();
         precioGarAux.add(7500);
+        precioGarAux2.add(3000);
+        precioGarAux2.add(-5000);
         String dirAux = "Calle nueva";
 
         assertThrows(IllegalArgumentException.class, () -> gestor.anhadirApartamento(-3, 55000, precioGarAux, 150, 14000, dirAux));
         assertThrows(IllegalArgumentException.class, () -> gestor.anhadirApartamento(3, 0, precioGarAux, 150, 14000, dirAux));
+        assertThrows(IllegalArgumentException.class, () -> gestor.anhadirApartamento(3, 55000, precioGarAux2, 120, 15000, dirAux));
         assertThrows(IllegalArgumentException.class, () -> gestor.anhadirApartamento(3, 55000, precioGarAux, -5000, 14000, dirAux));
         assertThrows(IllegalArgumentException.class, () -> gestor.anhadirApartamento(3, 55000, precioGarAux, 150, -7, dirAux));
     }
