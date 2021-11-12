@@ -8,7 +8,7 @@ import java.util.Objects;
 public class Gestion {
     ArrayList<Anuncio> listaapartamentos;
 
-    Comparator<Anuncio> criterio = null;
+    Comparator<Anuncio> criterio;
 
     public Gestion(Comparator<Anuncio> criterio) {
         this.listaapartamentos = new ArrayList<>();
