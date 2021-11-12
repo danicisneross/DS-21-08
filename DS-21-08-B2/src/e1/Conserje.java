@@ -21,9 +21,9 @@ public class Conserje extends Personal {
         setComp_nocturnidad(10);
         setRecompensa(getHorrocruxes() * getGaleones());
 
-//        if (!galeonesValido()) {
-//            throw new IllegalArgumentException();
-//        }
+        if (galeonesValido()) {
+            throw new IllegalArgumentException();
+        }
     }
 
     @Override
@@ -33,7 +33,6 @@ public class Conserje extends Personal {
 
     @Override
     public String toStringSalario() {
-
         return getNombre() + " " + getApellido() + " (Conserje): " + getSalario() + " galeones";
     }
 }

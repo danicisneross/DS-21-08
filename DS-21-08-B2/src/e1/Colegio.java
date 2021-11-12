@@ -17,19 +17,24 @@ public class Colegio {
         this.listaPersonal.add(p);
     }
 
-    public String imprimirRecompensa() {
+    public String imprimirRecompensa() { //
         StringBuilder tablaRecompensas = new StringBuilder();
         float recompensa_total = 0;
 
-        for (Residente r : listaResidentes) {
-            tablaRecompensas.append(r.toString()).append("\n");
-            recompensa_total += r.getRecompensa();
-        }
-
-        for (Personal p : listaPersonal) {
-            tablaRecompensas.append(p.toString()).append("\n");
-            recompensa_total += p.getRecompensa();
-        }
+       if (listaResidentes.size()!= 0) {
+           for (Residente r : listaResidentes) {
+               tablaRecompensas.append(r.toString()).append("\n");
+               recompensa_total += r.getRecompensa();
+           }
+       }
+       if (listaPersonal.size()!= 0 ) {
+            for (Personal p : listaPersonal) {
+                tablaRecompensas.append(p.toString()).append("\n");
+                recompensa_total += p.getRecompensa();
+            }
+       } else {
+           throw new IllegalArgumentException();
+       }
 
         tablaRecompensas.append("La recompensa total del Colegio Hogwarts es de ").append(recompensa_total).append(" galeones");
         return tablaRecompensas.toString();

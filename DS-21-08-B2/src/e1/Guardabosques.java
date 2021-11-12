@@ -22,9 +22,9 @@ public class Guardabosques extends Personal {
         setComp_nocturnidad(10);
         setRecompensa(getHorrocruxes() * getGaleones() );
 
-//        if (!galeonesValido()) {
-//            throw new IllegalArgumentException();
-//        }
+        if (galeonesValido()) {
+            throw new IllegalArgumentException();
+        }
     }
 
     @Override
@@ -34,7 +34,6 @@ public class Guardabosques extends Personal {
 
     @Override
     public String toStringSalario() {
-
         return getNombre() + " " + getApellido() + " (Guardabosques): " + getSalario() + " galeones";
     }
 }

@@ -65,6 +65,10 @@ public abstract class Member {
 
     public void setGaleones(float galeones) {
         this.galeones = galeones;
+
+        if(galeonesValido()) {
+            throw new IllegalArgumentException();
+        }
     }
 
     public float getGaleones() {
@@ -72,6 +76,6 @@ public abstract class Member {
     }
 
     public boolean galeonesValido() {
-        return getGaleones() > 0;
+        return !(getGaleones() > 0);
     }
 }

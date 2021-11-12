@@ -18,14 +18,13 @@ public class Fantasma extends Residente {
         setGaleones(80);
         setRecompensa();
 
-        if (!galeonesValido()) {
+        if (galeonesValido()) {
             throw new IllegalArgumentException();
         }
     }
 
     @Override
     public String toString() {
-
         return getNombre() +" "+ getApellido() + " (Fantasma de " + getCasa().toString() + ", " + getHorrocruxes() + " horrocruxes): " + getRecompensa() + " galeones";
     }
 }

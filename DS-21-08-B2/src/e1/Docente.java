@@ -38,7 +38,7 @@ public class Docente extends Personal {
         setSalario();
         setRecompensa();
 
-        if (!materiaValida()) {
+        if (!materiaValida() || galeonesValido()) {
             throw new IllegalArgumentException();
         }
     }
@@ -69,18 +69,11 @@ public class Docente extends Personal {
 
     @Override
     public String toString() {
-        String docente;
-
-        docente = getNombre() + " " + getApellido() + " (Docente de " + getMateria() + ", " + getHorrocruxes() + " horrocruxes): " + getRecompensa() + " galeones";
-        return docente;
+        return getNombre() + " " + getApellido() + " (Docente de " + getMateria() + ", " + getHorrocruxes() + " horrocruxes): " + getRecompensa() + " galeones";
     }
 
     @Override
     public String toStringSalario() {
-        String s_docente;
-
-
-        s_docente = getNombre() + " " + getApellido() + " (Docente de " + getMateria() + "): " + getSalario() + " galeones";
-        return s_docente;
+        return getNombre() + " " + getApellido() + " (Docente de " + getMateria() + "): " + getSalario() + " galeones";
     }
 }

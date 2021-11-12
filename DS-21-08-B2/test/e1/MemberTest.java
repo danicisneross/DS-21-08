@@ -66,7 +66,7 @@ class MemberTest {
 
         //Exepciones
         assertThrows(IllegalArgumentException.class, () -> new Estudiante("Luna","Lovegood",15,-1,"Ravenclaw"));
-        //assertThrows(IllegalArgumentException.class, () -> miembro1.setGaleones(-20)); //por que no lanza la execepcion
+        assertThrows(IllegalArgumentException.class, () -> miembro1.setGaleones(-20));
     }
 
     @Test
@@ -80,6 +80,14 @@ class MemberTest {
         assertEquals(250f, miembro7.getSalario());
         assertEquals(350f, miembro8.getSalario());
         assertEquals(200f, miembro9.getSalario());
+
+        assertEquals("Minerva McGonagall (Docente de Transformaciones): 400.0 galeones", miembro3.toStringSalario());
+        assertEquals("Rubeus Hagrid (Guardabosques): 180.0 galeones", miembro4.toStringSalario());
+        assertEquals("Severus Snape (Docente de Defensa): 500.0 galeones", miembro5.toStringSalario());
+        assertEquals("Argus Flich (Conserje): 160.0 galeones", miembro6.toStringSalario());
+        assertEquals("Pomona Sprout (Docente de Herbologia): 250.0 galeones", miembro7.toStringSalario());
+        assertEquals("Horacle Flaccus (Docente de Pociones): 350.0 galeones", miembro8.toStringSalario());
+        assertEquals("Cuthbert Binns (Docente de Historia): 200.0 galeones", miembro9.toStringSalario());
 
         //Exepciones
         assertThrows(IllegalArgumentException.class, () -> miembro3.setSalario_base(-20));

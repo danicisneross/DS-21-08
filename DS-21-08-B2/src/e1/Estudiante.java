@@ -17,9 +17,9 @@ public class Estudiante extends Residente {
         setGaleones(90);
         setRecompensa();
 
-//        if (!galeonesValido()) {
-//            throw new IllegalArgumentException();
-//        }
+        if (galeonesValido()) {
+            throw new IllegalArgumentException();
+        }
   }
 
     @Override
