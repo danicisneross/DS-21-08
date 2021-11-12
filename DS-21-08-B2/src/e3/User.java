@@ -15,8 +15,4 @@ public class User {
     public String getUser() {
         return user;
     }
-
-    public List<TopicOfInterest> getTopicList() {
-        return topicList;
-    }
 }

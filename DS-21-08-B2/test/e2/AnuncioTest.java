@@ -71,6 +71,19 @@ class AnuncioTest {
 
         assertEquals(simpleAnuncioAux, simpleAnuncioAux2);
         assertEquals(simpleAnuncioAux, simpleAnuncioAux3);
+    }
+
+    @Test
+    void testHashCode() {
+        ArrayList<Integer> precioGarAux = new ArrayList<>();
+        precioGarAux.add(2500);
+        precioGarAux.add(4000);
+
+        String direcAux = "Calle Diego Maradona 10";
+
+        Anuncio simpleAnuncioAux = new Anuncio(5, 75000, precioGarAux, 150, 15000, direcAux);
+        Anuncio simpleAnuncioAux2 = new Anuncio(5, 75000, precioGarAux, 150, 15000, direcAux);
+        Anuncio simpleAnuncioAux3 = new Anuncio(10, 75000, precioGarAux, 150, 15000, direcAux);
 
         assertEquals(simpleAnuncioAux.hashCode(), simpleAnuncioAux2.hashCode());
         assertEquals(simpleAnuncioAux.hashCode(), simpleAnuncioAux3.hashCode());
