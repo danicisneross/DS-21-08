@@ -22,15 +22,6 @@ public abstract class Member {
         }
     }
 
-    /**
-     * recompensa_anual es un metodo comun aplicable a todos los miembros, donde el Ministerio de
-     * Magia otorga una recompensa dependiendo de los horrocruxes destruidos y de la clase a
-     * a la que pertenezca.
-     *
-     * @return recompensa.
-     */
-
-
     public String getNombre() {
         return nombre;
     }

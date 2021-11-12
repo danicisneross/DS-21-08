@@ -117,6 +117,7 @@ class MemberTest {
         colegio.addPersonal(miembro5);
         colegio.addPersonal(miembro6);
         colegio.addPersonal(miembro7);
+
         //Comprobamos que ambos metodos de colegio son correctos
         assertEquals("""
                 Hermione Granger (Estudiante de Gryffindor, 3 horrocruxes): 270.0 galeones
