@@ -21,7 +21,7 @@ public abstract class Member {
             throw new IllegalArgumentException();
         }
     }
-
+    
     public String getNombre() {
         return nombre;
     }

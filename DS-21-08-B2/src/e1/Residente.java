@@ -11,22 +11,12 @@ abstract class Residente extends Member {
 
     private final String casa;
 
-    public boolean casaValida(){
+    public boolean casaValida() {
     return (Casa.valueOf(this.casa) == Casa.valueOf(Casa.Gryffindor.toString())
             || Casa.valueOf(this.casa) == Casa.valueOf(Casa.Hufflepuff.toString())
             || Casa.valueOf(this.casa) == Casa.valueOf(Casa.Ravenclaw.toString())
             || Casa.valueOf(this.casa) == Casa.valueOf(Casa.Slytherin.toString()));
     }
-
-    /**
-     * Constructor de la clase Residente.
-     *
-     * @param nombre      datos del miembro.
-     * @param apellido    datos del miembro.
-     * @param edad        datos del miembro.
-     * @param horrocruxes numero de horrocruxes destruidos.
-     * @param casa        a la cual pertenece dicho residente.
-     */
 
     public Residente(String nombre, String apellido, int edad, int horrocruxes, String casa) {
         super(nombre, apellido, edad, horrocruxes);
@@ -36,7 +26,6 @@ abstract class Residente extends Member {
             throw new IllegalArgumentException();
         }
     }
-
 
     public Casa getCasa() {
         return Casa.valueOf(casa);

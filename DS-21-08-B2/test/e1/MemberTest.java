@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MemberTest {
-
+    
     Estudiante miembro1 = new Estudiante("Hermione","Granger",16,3,"Gryffindor");
     Fantasma miembro2 = new Fantasma("Baron","Sanguinario",45,1,"Slytherin");
     Docente miembro3 = new Docente("Minerva","McGonagall",40,1,"Transformaciones");
@@ -35,7 +35,6 @@ class MemberTest {
         assertEquals("Hagrid", miembro4.getApellido());
         assertEquals(60, miembro4.getEdad());
         assertEquals(2, miembro4.getHorrocruxes());
-
 
         assertEquals("Argus", miembro6.getNombre());
         assertEquals("Flich", miembro6.getApellido());
@@ -98,7 +97,7 @@ class MemberTest {
     @Test
     void ColegioTest() {
         Colegio colegio = new Colegio();
-
+        
         //Comprobamos que los toString son correctos
         assertEquals("Hermione Granger (Estudiante de Gryffindor, 3 horrocruxes): 270.0 galeones", miembro1.toString());
         assertEquals("Baron Sanguinario (Fantasma de Slytherin, 1 horrocruxes): 160.0 galeones", miembro2.toString());
@@ -117,7 +116,7 @@ class MemberTest {
         colegio.addPersonal(miembro5);
         colegio.addPersonal(miembro6);
         colegio.addPersonal(miembro7);
-
+        
         //Comprobamos que ambos metodos de colegio son correctos
         assertEquals("""
                 Hermione Granger (Estudiante de Gryffindor, 3 horrocruxes): 270.0 galeones

@@ -19,18 +19,6 @@ public class Docente extends Personal {
                 || Docente.Asignaturas.valueOf(this.materia) == Docente.Asignaturas.valueOf(Asignaturas.Pociones.toString()));
     }
 
-    /**
-     * Constructor de la clase Docente.
-     *
-     * @param nombre      datos del miembro.
-     * @param apellido    datos del miembro.
-     * @param edad        datos del miembro.
-     * @param horrocruxes numero de horrocruxes destruidos.
-     * @param materia     que imparte el docente.
-     *                    Los galeones por horrocrux (heredados de Member) dependen de cada clase. Los
-     *                    utilizaremos para calcular la recompensa_anual.
-     */
-
     public Docente(String nombre, String apellido, int edad, int horrocruxes, String materia) {
         super(nombre, apellido, edad, horrocruxes);
         setGaleones(50);
@@ -55,7 +43,8 @@ public class Docente extends Personal {
             super.setRecompensa(getHorrocruxes() * getGaleones());
         }
     }
-
+    
+    //el salario en los docentes depende de la materia que imparten.
     public void setSalario() {
 
         switch (getMateria()) {
