@@ -10,7 +10,7 @@ public class Estudiante extends Residente {
         if (galeonesValido()) {
             throw new IllegalArgumentException();
         }
-  }
+    }
 
     @Override
     public String toString() {
