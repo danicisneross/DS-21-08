@@ -8,11 +8,13 @@ public class Tarea {
     private boolean realizada;
 
     public Tarea(char nombre, List<Tarea> dependeDe, boolean realizada) {
-        if (Character.isLowerCase(nombre))
-            throw new IllegalArgumentException();
+       
         this.nombre = nombre;
         this.dependeDe = dependeDe;
         this.realizada = realizada;
+         
+        if (Character.isLowerCase(nombre))
+            throw new IllegalArgumentException();
     }
 
     public char getNombre() {
