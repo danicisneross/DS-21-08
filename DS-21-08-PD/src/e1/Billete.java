@@ -1,51 +1,56 @@
 package e1;
 
+import java.time.LocalDate;
+
 public class Billete {
-    private String origen;
-    private String destino;
-    private float precio;
-    private int fecha;
 
-    public Billete (String origen, String destino, float precio, int fecha) {
-        this.origen = origen;
-        this.destino = destino;
-        this.precio = precio;
-        this.fecha = fecha;
+    private String origenb;
+    private String destinob;
+    private float preciob;
+    private LocalDate fechab;
 
-        if (precio <= 0 || fecha <= 0)
+    public Billete (String origen, String destino, float precio, LocalDate fecha) {
+        this.origenb = origen;
+        this.destinob = destino;
+        this.preciob = precio;
+        this.fechab = fecha;
+
+        if (precio <= 0) {
             throw new IllegalArgumentException();
+        }
     }
 
     public String getOrigen() {
-        return origen;
+        return origenb;
     }
 
     public void setOrigen(String origen) {
-        this.origen = origen;
+        this.origenb = origen;
     }
 
     public String getDestino() {
-        return destino;
+        return destinob;
     }
 
     public void setDestino(String destino) {
-        this.destino = destino;
+        this.destinob = destino;
     }
 
     public float getPrecio() {
-        return precio;
+        return preciob;
     }
 
     public void setPrecio(float precio) {
-        this.precio = precio;
+        this.preciob = precio;
     }
 
-    public int getFecha() {
-        return fecha;
+    public LocalDate getFecha() {
+        return fechab;
     }
 
-    public void setFecha(int fecha) {
-        this.fecha = fecha;
+    public void setFecha(LocalDate fecha) {
+        this.fechab = fecha;
     }
+
 }
 
