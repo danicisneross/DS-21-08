@@ -1,38 +1,39 @@
 package e2;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class OrdenJerarquico extends AlgoritmoOrdenacion {
-    private List<Tarea> listaOrdenada;
-    private List<Tarea> listaAuxiliar;
-    private List<Tarea> listaAuxiliar2;
-    private boolean disponible = false;
+    private List<Tarea> listaOrdenada = new ArrayList<>();
+    private List<Tarea> listaNivel1 = new ArrayList<>();
+    private List<Tarea> listaNivel2 = new ArrayList<>();
 
     @Override
-    public List<Tarea> ordena (ListaTareas listaTareas) {
-        Collections.sort(listaTareas.getListaTareas(), new ComparadorNombre());
-        for (int i = 0; i < listaTareas.getListaTareas().size(); i++) {
-            if (listaTareas.getListaTareas().get(i).getDependeDe() == null) {
-                listaTareas.getListaTareas().get(i).setRealizada(true);
-                listaOrdenada.add(listaTareas.getListaTareas().get(i));
-                listaTareas.getListaTareas().remove(i);
+    public List<Tarea> ordena (ListaTareas gestor) {
+        for (int i = 0; i < gestor.getListaTareas().size(); i++) {
+            if (gestor.getListaTareas().get(i).getDependeDe() == null) {
+                gestor.getListaTareas().get(i).setRealizada(true);
+                listaNivel1.add(gestor.getListaTareas().get(i));
             }
         }
-
-        for (int i = 0; i < listaTareas.getListaTareas().size(); i++) {
-            for (int j = 0; j < listaTareas.getListaTareas().get(i).getDependeDe().size(); j++) {
-                if (listaTareas.getListaTareas().get(i).getDependeDe().get(j).isRealizada()) {
-                    disponible = true;
-                    break;
+        Collections.sort(listaNivel1, new ComparadorNombre());
+        listaOrdenada.addAll(listaNivel1);
+        for (int k = 0; k < gestor.getListaTareas().size(); k++) {
+            if (gestor.getListaTareas().get(k).getDependeDe() != null) {
+                for (int h = 0; h < gestor.getListaTareas().get(k).getDependeDe().size(); h++) {
+                    for (Tarea tarea : listaNivel1) {
+                        if (gestor.getListaTareas().get(k).getDependeDe().get(h) == tarea) {
+                            gestor.getListaTareas().get(k).setRealizada(true);
+                            listaNivel2.add(gestor.getListaTareas().get(k));
+                        }
+                    }
                 }
             }
-            if (disponible) {
-                listaTareas.getListaTareas().get(i).setRealizada(true);
-                listaOrdenada.add(listaTareas.getListaTareas().get(i));
-                listaTareas.getListaTareas().remove(i);
-            }
         }
+        Collections.sort(listaNivel2, new ComparadorNombre());
+        listaOrdenada.addAll(listaNivel2);
         return listaOrdenada;
     }
 }
+
