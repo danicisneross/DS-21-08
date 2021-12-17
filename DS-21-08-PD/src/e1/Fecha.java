@@ -1,17 +1,16 @@
 package e1;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 
-public class Fecha extends Criterios {
+public class Fecha extends Criterio {
 
-    public LocalDate fecha;
+    private LocalDate fecha;
 
-    public Fecha(LocalDate fecha, List<Fecha> listaFechas) {
-        this.fecha = fecha;
+    public Fecha(String fecha) {
+        this.fecha = LocalDate.parse(fecha);
     }
 
     public LocalDate getFecha() {
@@ -24,7 +23,7 @@ public class Fecha extends Criterios {
 
     @Override
     public List<Billete> hacerBusqueda(List<Billete> billetesGeneral) {
-        List<Billete> billetesSeleccionadosF = getListaBilletes();
+        var billetesSeleccionadosF = getListaBilletes();
 
         if (getListaBilletes().size() != 0) {
             for (Billete b : getListaBilletes()) {

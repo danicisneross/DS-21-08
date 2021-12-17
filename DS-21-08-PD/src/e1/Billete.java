@@ -6,14 +6,14 @@ public class Billete {
 
     private String origenb;
     private String destinob;
-    private float preciob;
+    private double preciob;
     private LocalDate fechab;
 
-    public Billete (String origen, String destino, float precio, LocalDate fecha) {
+    public Billete (String origen, String destino, double precio, String fecha) {
         this.origenb = origen;
         this.destinob = destino;
         this.preciob = precio;
-        this.fechab = fecha;
+        this.fechab = LocalDate.parse(fecha);
 
         if (precio <= 0) {
             throw new IllegalArgumentException();
@@ -36,11 +36,11 @@ public class Billete {
         this.destinob = destino;
     }
 
-    public float getPrecio() {
+    public double getPrecio() {
         return preciob;
     }
 
-    public void setPrecio(float precio) {
+    public void setPrecio(double precio) {
         this.preciob = precio;
     }
 

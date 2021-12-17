@@ -2,21 +2,26 @@ package e1;
 
 import java.util.List;
 
-public class Precio extends Criterios { //hacer getter y setter
+public class Precio extends Criterio { //hacer getter y setter
 
-    private float precio;
+    private double precio;
 
-    public float getPrecio() {
+    public Precio(double precio) {
+        this.precio = precio;
+
+        if(precio <= 0){
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(float precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
-    public Precio(float precio, List<Precio> listaPrecios) {
-        this.precio = precio;
-    }
 
     @Override
     public List<Billete> hacerBusqueda(List<Billete> billetesGeneral) {

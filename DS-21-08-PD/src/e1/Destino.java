@@ -1,12 +1,11 @@
 package e1;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Destino extends Criterios {
+public class Destino extends Criterio {
 
-    public String destino;
+    private String destino;
 
     public Destino(String destino) {
         this.destino = destino;
@@ -21,8 +20,8 @@ public class Destino extends Criterios {
     }
 
     @Override
-    public List<Billete> hacerBusqueda(List<Billete> billetesGeneral) { //para que tengo esa lista de billetesGeneral
-        List<Billete> billetesSeleccionadosD = new ArrayList<>();
+    public List<Billete> hacerBusqueda(List<Billete> billetesGeneral) {
+        var billetesSeleccionadosD = getListaBilletes();
 
         if (getListaBilletes().size() != 0) {
             for (Billete b : getListaBilletes()) {

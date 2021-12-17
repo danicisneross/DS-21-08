@@ -3,7 +3,7 @@ package e1;
 import java.util.List;
 import java.util.Objects;
 
-public class Origen extends Criterios {
+public class Origen extends Criterio {
 
     private String origen;
 
@@ -20,7 +20,7 @@ public class Origen extends Criterios {
     }
 
     @Override
-    public List<Billete> hacerBusqueda(List<Billete> billetesGeneral) { //para que tengo esa lista de billetesGeneral
+    public List<Billete> hacerBusqueda(List<Billete> billetesGeneral) {
         var billetesSeleccionadosO = getListaBilletes();
 
         if (getListaBilletes().size() != 0) {

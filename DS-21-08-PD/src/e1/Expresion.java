@@ -3,10 +3,11 @@ package e1;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Criterios {
+public abstract class Expresion {
+
+    public abstract List<Billete> hacerBusqueda(List<Billete> billetesGeneral);
 
     private List<Billete> listaBilletes = new ArrayList<>();
-    public abstract List<Billete> hacerBusqueda(List<Billete> billetesGeneral);
 
     public List<Billete> getListaBilletes() {
         return listaBilletes;
