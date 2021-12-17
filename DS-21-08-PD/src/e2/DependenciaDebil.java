@@ -1,39 +1,45 @@
 package e2;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class DependenciaDebil extends AlgoritmoOrdenacion {
-    private List<Tarea> listaOrdenada;
-    private List<Tarea> listaAuxiliar;
-    private List<Tarea> listaAuxiliar2;
+    private List<Tarea> listaOrdenada = new ArrayList<>();
     private boolean disponible = false;
 
     @Override
-    public List<Tarea> ordena (ListaTareas listaTareas) {
-        Collections.sort(listaTareas.getListaTareas(), new ComparadorNombre());
-        for (int i = 0; i < listaTareas.getListaTareas().size(); i++) {
-            if (listaTareas.getListaTareas().get(i).getDependeDe() == null) {
-                listaTareas.getListaTareas().get(i).setRealizada(true);
-                listaOrdenada.add(listaTareas.getListaTareas().get(i));
-                listaTareas.getListaTareas().remove(i);
-                break;
-            }
-        }
+    public List<Tarea> ordena (ListaTareas gestor) {
+        int tamano = gestor.getListaTareas().size();
 
-        for (int i = 0; i < listaTareas.getListaTareas().size(); i++) {
-            for (int j = 0; j < listaTareas.getListaTareas().get(i).getDependeDe().size(); j++) {
-                if (listaTareas.getListaTareas().get(i).getDependeDe().get(j).isRealizada()) {
-                    disponible = true;
-                    break;
+
+        while (listaOrdenada.size() <= tamano) {
+            List<Tarea> disponibles = new ArrayList<>();
+            for (int i = 0; i < gestor.getListaTareas().size(); i++) {
+                if (gestor.getListaTareas().get(i).getDependeDe() != null) {
+                    for (int j = 0; j < gestor.getListaTareas().get(i).getDependeDe().size(); j++) {
+                        if (gestor.getListaTareas().get(i).getDependeDe().get(j).isRealizada()) {
+                            disponible = true;
+                            break;
+                        }
+                    }
+                    if (!gestor.getListaTareas().get(i).isRealizada() && disponible) {
+                        disponibles.add(gestor.getListaTareas().get(i));
+                    }
+                } else {
+                    disponibles.add(gestor.getListaTareas().get(i));
                 }
             }
-            if (disponible) {
-                listaTareas.getListaTareas().get(i).setRealizada(true);
-                listaOrdenada.add(listaTareas.getListaTareas().get(i));
-                listaTareas.getListaTareas().remove(i);
+            Collections.sort(disponibles, new ComparadorNombre());
+            for (int k = 0; k < gestor.getListaTareas().size(); k++) {
+                if (gestor.getListaTareas().get(k) == disponibles.get(0)) {
+                    gestor.getListaTareas().get(k).setRealizada(true);
+                    listaOrdenada.add(gestor.getListaTareas().get(k));
+                    break;
+                }
             }
         }
         return listaOrdenada;
     }
 }
+
