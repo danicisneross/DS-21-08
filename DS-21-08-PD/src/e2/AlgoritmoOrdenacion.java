@@ -1,10 +1,11 @@
 package e2;
 
+import java.util.Collections;
 import java.util.List;
 
 abstract class AlgoritmoOrdenacion {
-    private List<Tarea> listaOrdenada;
-    List<Tarea> ordena(ListaTareas listaTareas) {
-        return listaOrdenada;
+    public List<Tarea> ordena(ListaTareas listaTareas) {
+        Collections.sort(listaTareas.getListaTareas(), new ComparadorNombre());
+        return listaTareas.getListaTareas();
     }
 }
